@@ -1,0 +1,73 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Walix</title>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        font-size: 14px;
+        background: #f2f2f2;
+        min-width: 180px;
+      }
+      #menu {
+        list-style: none;
+        text-align: left;
+        cursor: pointer;
+      }
+      #menu li:first-child {
+        border-top: 0 none;
+      }
+      #menu li {
+        border-top: 1px solid #e1e1e1;
+        padding: 4px 10px;
+        line-height: 1.4;
+        cursor: normal;
+      }
+      #menu li:hover {
+        background: #4f9dfb;
+        color: #fff;
+      }
+      #file {
+        display: none;
+        position: fixed;
+        top: 100px;
+        left: -100px;
+      }
+      #qrcode {
+        padding: 5px;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <ul id="menu">
+      <li>当前状态：<span id="status"></span></li>
+      <li><span id="captureStatus">开始</span>录制</li>
+      <li>播放</li>
+      <li>保存当前用例<span id="storeCase"></span></li>
+      <li>上传用例</li>
+      <li>清空</li>
+      <li>生成二维码</li>
+      <li>使用帮助?</li>
+    </ul>
+    <input type='file' id="file" multiple=""><br>
+    <div id="qrcode"></div>
+  </body>
+</html>
+
